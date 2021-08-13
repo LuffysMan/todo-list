@@ -15,17 +15,25 @@ plugins {
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
+
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+
+}
+
+test {
+    useJUnitPlatform()
 }
 
 application {
