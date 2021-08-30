@@ -20,11 +20,9 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
-
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.2-jre'
+    implementation('org.xerial:sqlite-jdbc:3.36.0.1')
+    implementation('com.google.guava:guava:28.2-jre')
+    implementation('org.flywaydb:flyway-core:6.3.3')
 
     // Use JUnit test framework
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
