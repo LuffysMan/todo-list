@@ -34,7 +34,7 @@ src
   - 分割命令的多余空格会被去除: 例如```todo   init``` 等价于```todo init```.
   - 不符合规则的命令, 比如```todo init hello```, 应当输出: ```Bad Command: todo <init>```
   - 执行成功则返回 ```Initialized empty todo repository in /path/to/todo.db```
-
+  - 不符合规则的命令, 如果第一个主命令不能识别, 应当输出 ```Bad Command: todo <init> | <add> | <list> | <set> | <drop>```
 
 
 ## Story2: 添加任务
