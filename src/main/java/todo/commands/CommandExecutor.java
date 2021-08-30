@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class CommandExecutor {
     public CommandResponse execute(String... commandTokens) {
+
         try {
             try (Connection connection = DriverManager.getConnection("jdbc:sqlite:todo.db")) {
                 DatabaseMetaData meta = connection.getMetaData();
