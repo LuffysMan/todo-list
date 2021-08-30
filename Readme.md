@@ -33,6 +33,7 @@ src
   - 在解析命令时, 首尾的空格会被去掉: 例如```  todo init  ``` 等价于 ```todo init```.
   - 分割命令的多余空格会被去除: 例如```todo   init``` 等价于```todo init```.
   - 不符合规则的命令, 比如```todo init hello```, 应当输出: ```Bad Command: todo <init>```
+  - 执行成功则返回 ```Initialized empty todo repository in /path/to/todo.db```
 
 
 
