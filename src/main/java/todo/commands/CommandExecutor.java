@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class CommandExecutor {
     public CommandResponse execute(String command) {
+        command = command.trim();
         if (command.equals("init")) {
-
             try {
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:todo.db")) {
                     DatabaseMetaData meta = connection.getMetaData();
