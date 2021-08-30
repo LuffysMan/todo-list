@@ -15,7 +15,7 @@ public class CommandExecutor {
         } catch (SQLException e) {
             return new CommandResponse("failed to connect connect to database", false);
         }
-
-        return new CommandResponse("Initialized empty todo repository in /home/luffy/Workspace/Project/todo-list/todo.db", true);
+        String path = String.format("Initialized empty todo repository in %s/todo.db", System.getProperty("user.dir"));
+        return new CommandResponse(path, true);
     }
 }
