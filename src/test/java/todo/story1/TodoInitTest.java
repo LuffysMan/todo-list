@@ -33,4 +33,10 @@ public class TodoInitTest {
         final CommandResponse response = executor.execute("initial");
         assertFailedResponse("Bad Command: todo <init> | <add> | <list> | <set> | <drop>", response);
     }
+
+    @Test
+    void should_fail_if_more_than_one_command_when_init() {
+        final CommandResponse response = executor.execute("init database");
+        assertFailedResponse("Bad Command: todo <init>", response);
+    }
 }
