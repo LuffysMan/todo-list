@@ -8,7 +8,12 @@ import java.sql.SQLException;
 public class CommandExecutor {
     public CommandResponse execute(String command) {
         command = command.trim();
-        if (command.equals("init")) {
+        String[] commandTokens = command.split("\\s+");
+        String commandName = commandTokens[0];
+        if (commandName.equals("init")) {
+            if (commandTokens.length != 1) {
+                return new CommandResponse("Bad Command: todo <init>", false);
+            }
             try {
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:todo.db")) {
                     DatabaseMetaData meta = connection.getMetaData();
