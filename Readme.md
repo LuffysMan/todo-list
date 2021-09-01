@@ -49,7 +49,7 @@ src
     - id: 任务id, 唯一标识, 32位整数.
     - name: 任务名称, 不能为NULL, 不能超过32个字符.
     - begin: 任务开始时间, 不能为NULL.
-    - end: 任务结束时间, 不能为NULL.
+    - end: 任务结束时间, 可以为空.
     - parent: 父任务ID(默认为1).
     - children: 子任务ID(如果有任务以当前任务为父任务, 则添加到末尾, 以逗号分割), text类型.
     - state: 任务状态, 默认为0, boolean类型, 不能为NULL.
