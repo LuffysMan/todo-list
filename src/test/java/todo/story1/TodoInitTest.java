@@ -27,14 +27,15 @@ public class TodoInitTest {
 
     @Test
     void should_create_table_tasks_when_init() throws SQLException {
-        executor.execute("init");
+        CommandResponse response = executor.execute("init");
+        assertSuccessResponse("Initialized empty todo repository in /home/luffy/Workspace/Project/todo-list/todo.db", response);
+
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:todo.db")) {
-            assertDoesNotThrow(  () -> {
+            assertDoesNotThrow(() -> {
                 try (Statement statement = connection.createStatement()) {
                     statement.executeQuery("SELECT * FROM tasks");
                 }
             });
-
         }
     }
 
