@@ -1,9 +1,6 @@
 package todo.commands;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class CommandExecutor {
     public CommandResponse execute(String command) {
@@ -21,6 +18,9 @@ public class CommandExecutor {
             }
             try {
                 try (Connection connection = DriverManager.getConnection("jdbc:sqlite:todo.db")) {
+                    if (isTableExists(connection)) {
+                        return new CommandResponse("An todo repository already exists", true);
+                    }
                     createTable(connection);
                 }
             } catch (SQLException e) {
@@ -30,6 +30,15 @@ public class CommandExecutor {
             return new CommandResponse(path, true);
         }
         return new CommandResponse("Bad Command: todo <init> | <add> | <list> | <set> | <drop>", false);
+    }
+
+    private boolean isTableExists(Connection connection) throws SQLException {
+        DatabaseMetaData metaData = connection.getMetaData();
+        ResultSet resultSet = metaData.getTables(null, null, "tasks", new String[]{"TABLE"});
+        if (resultSet.next()) {
+            return true;
+        }
+        return false;
     }
 
     private void createTable(Connection connection) throws SQLException {
