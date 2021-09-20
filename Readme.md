@@ -35,7 +35,7 @@ src
   3. 在解析命令时, 首尾的空格应当被去掉: 例如```  todo init  ``` 等价于 ```todo init```.
   4. 在解析命令时, 分割命令的多余空格应当被去除: 例如```todo   init``` 等价于```todo init```.
   5. 执行成功情况1: 第一次创建todo repository, 应当返回 ```Initialized empty todo repository in /path/to/todo.db Successfully```
-  1. 执行成功情况2: todo repository已经存在(具体表现为todo.db存在且tasks表存在), 应当返回```Reinitialized todo repository Successfully```
+  1. 执行成功情况2: todo repository已经存在(具体表现为todo.db存在且tasks表存在), 应当返回```An todo repository already exists```
   6. 不符合规则的命令, 比如```todo init hello```, 应当输出: ```Bad Command: todo <init>```
   7. 不符合规则的命令, 如果第一个主命令不能识别, 应当输出 ```Bad Command: todo <init> | <add> | <list> | <set> | <drop>```
 
