@@ -40,6 +40,12 @@ public class TodoInitTest {
     }
 
     @Test
+    void should_do_nothing_when_init_if_table_tasks_exists() {
+        CommandResponse response = executor.execute("init");
+        assertSuccessResponse("An todo repository already exists", response);
+    }
+
+    @Test
     void should_ignore_spaces_in_head_and_tail() {
         final CommandResponse response = executor.execute("  init  ");
         assertSuccessResponse("Initialized empty todo repository in /home/luffy/Workspace/Project/todo-list/todo.db", response);
